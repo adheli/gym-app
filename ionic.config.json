@@ -1,0 +1,8 @@
+{
+  "name": "gym-app",
+  "app_id": "a6940a34",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
