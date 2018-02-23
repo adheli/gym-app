@@ -1,0 +1,55 @@
+<!--
+  Generated template for the CreateExercisePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Adicionar Atividade</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Tipo</ion-label>
+      <ion-input type="text" [(ngModel)]="exercise.tipo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Atividade</ion-label>
+      <ion-input type="text" [(ngModel)]="exercise.atividade"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Maquina</ion-label>
+      <ion-input type="text" [(ngModel)]="exercise.maquina"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Série</ion-label>
+      <ion-input type="number" [(ngModel)]="exercise.serie"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Repetições</ion-label>
+      <ion-input type="number" [(ngModel)]="exercise.repeticoes"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Peso</ion-label>
+      <ion-input type="number" [(ngModel)]="exercise.peso"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block (click)="saveExercise()">Salvar</button>
+
+  <button ion-button block (click)="goHome()">Cancelar</button>
+
+</ion-content>
