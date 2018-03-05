@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { ListPage } from './../list/list';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -11,4 +13,15 @@ export class HomePage {
 
   }
 
+  public gotoAList() {
+    this.navCtrl.push(ListPage, {
+      type: 'A'
+    });
+  }
+
+  public gotoBList() {
+    this.navCtrl.push(ListPage, {
+      type: 'B'
+    });
+  }
 }

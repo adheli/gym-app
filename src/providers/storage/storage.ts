@@ -29,12 +29,12 @@ export class StorageProvider {
   private nextKey(): string {
     let lastIndex = 1;
     let key = 'ex';
-    if (localStorage.getItem('lastIndex') !== undefined) {
-      lastIndex = Number.parseInt(localStorage.getItem('lastIndex')) + 1;
+    if (this.storage.getItem('lastIndex') !== undefined) {
+      lastIndex = Number.parseInt(this.storage.getItem('lastIndex')) + 1;
     }
 
     key = key.concat(lastIndex.toString());
-    localStorage.setItem('lastIndex', lastIndex.toString());
+    this.storage.setItem('lastIndex', lastIndex.toString());
 
     return key;
   }

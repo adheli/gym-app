@@ -1,37 +1,41 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { ExercisePage } from './../exercise/exercise';
+import { ExerciseModel } from './../../model/exercise';
+import { StorageProvider } from './../../providers/storage/storage';
+
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
-  selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+  exercises: ExerciseModel[] = new Array();
+  type: string;
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storageProvider: StorageProvider) {
+    this.type = navParams.get('type');
+  }
 
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
+  public initView() {
+    this.exercises = new Array();
+
+    const lastIndex: number = + this.storageProvider.retrieveFromStorage('lastIndex');
+
+    for (let i = lastIndex; i < 0; i--) {
+      const rawExercise = this.storageProvider.retrieveFromStorage('ex'.concat(i.toString()));
+      const exercise: ExerciseModel = JSON.parse(rawExercise);
+
+      if (this.type.toLowerCase().match(exercise.tipo)) {
+        this.exercises.push(exercise);
+      }
     }
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
-      item: item
+  public itemTapped(item: any) {
+    this.navCtrl.push(ExercisePage, {
+      id: item
     });
   }
 }

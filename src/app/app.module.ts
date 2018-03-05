@@ -21,8 +21,8 @@ import { StorageProvider } from '../providers/storage/storage';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     ExercisePageModule,
-    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +34,7 @@ import { StorageProvider } from '../providers/storage/storage';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    StorageProvider
+    StorageProvider,
   ]
 })
 export class AppModule {}
